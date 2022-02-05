@@ -1,19 +1,21 @@
-function Header() {
+function Header(props) {
     return(
         <header>
-            <h1>Header</h1>
-            <Nav/>
+            <h1>{props.data.site_name}</h1>
+            {/* <h1>{props.sitename}</h1> */}
+         {/* <Nav nav= {props.data.nav} /> */}
+         <Nav nav={props.data.nav}/>
         </header>
     );
 }
 
-function Nav() {
+function Nav(props) {
+    let data = props.nav;
+    const listItem = data.map( item => <li key={item.link}><a href={item.link}>{item.text}</a></li>);
     return(
         <nav>
             <ul>
-                <li>Link 1</li>
-                <li>Link 2</li>
-                <li>Link 3</li>
+            {listItem}
             </ul>
         </nav>
     )
